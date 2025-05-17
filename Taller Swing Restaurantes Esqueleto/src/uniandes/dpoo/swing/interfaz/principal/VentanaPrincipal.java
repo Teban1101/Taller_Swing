@@ -48,7 +48,7 @@ public class VentanaPrincipal extends JFrame
         this.mundo = elDiario;
         setLayout( new BorderLayout( ) );
 
-        // Configura los componentes de la ventana
+        // Configuro los componentes
         pBotones = new PanelBotones( this );
         add( pBotones, BorderLayout.NORTH );
 
@@ -58,13 +58,10 @@ public class VentanaPrincipal extends JFrame
         pDetalles = new PanelDetallesRestaurante( );
         add( pDetalles, BorderLayout.SOUTH );
 
-        // Actualiza los restaurantes que se muestran
         actualizarRestaurantes( );
-
-        // Termina de configurar la ventana
         setTitle( "Restaurantes" );
         setDefaultCloseOperation( EXIT_ON_CLOSE );
-        setSize( 400, 600 );
+        setSize( 600, 600 );
         setLocationRelativeTo( null );
         setVisible( true );
     }
@@ -86,7 +83,6 @@ public class VentanaPrincipal extends JFrame
      */
     public void mostrarVentanaMapa( )
     {
-        // TODO completar mostrarVentanaMapa
     	if (ventanaMapa == null || !ventanaMapa.isVisible()) {
             ventanaMapa = new VentanaMapa(this, mundo.getRestaurantes(true));
             ventanaMapa.setVisible(true);
@@ -103,7 +99,6 @@ public class VentanaPrincipal extends JFrame
      */
     public void agregarRestaurante( String nombre, int calificacion, int x, int y, boolean visitado )
     {
-        // TODO completar agregarRestaurante
     	    Restaurante nuevo = new Restaurante(nombre, calificacion, y, x, visitado);
     	    mundo.agregarRestaurante(nuevo);
     	    actualizarRestaurantes();
@@ -127,7 +122,6 @@ public class VentanaPrincipal extends JFrame
     private void actualizarRestaurantes( )
     {
         List<Restaurante> todos = this.mundo.getRestaurantes( true );
-        // TODO completar actualizarRestaurantes
         pLista.actualizarRestaurantes(todos);
         if (!todos.isEmpty()) {
             pDetalles.actualizarRestaurante(todos.get(0));
